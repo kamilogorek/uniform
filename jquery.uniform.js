@@ -461,8 +461,10 @@ Enjoy!
       if ($.browser.msie){
         // IE considers browser chrome blocking I/O, so it
         // suspends tiemouts until after the file has been selected.
-        $el.bind('click.uniform.ie7', function() {
-          setTimeout(setFilename, 0);
+        $el.mouseenter(function(){
+          var x = -($(this).outerWidth() - $(this).siblings('.action').outerWidth());
+        	$(this).css('left', x);
+        	setFilename();
         });
       }else{
         // All other browsers behave properly
